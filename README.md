@@ -28,37 +28,37 @@ git clone https://github.com/Big-Data-ETSIT/practica_creativa.git
 ```
 
 2. Descargamos los datos:
-
+```
 resources/download_data.sh
-
+```
 3. Instalamos todos los componentes incluidos en la arquitectura de la práctica
 
 4. Creamos y usamos el entorno de Python:
-
+```
 python3 -m venv env
 source env/bin/activate
-
+```
 5. Instalamos librerías necesarias
-
+```
 pip install -r requirements.txt
-
+```
 6. Abrimos la consola y vamos al directorio de descarga de Kafka y ejecutamos el siguiente comando para iniciar Zookeeper:
-
+```
 bin/zookeeper-server-start.sh config/zookeeper.properties
- 
+```
  7. Después, en otra terminal, volvemos a acceder al directorio de descarga y ejecutamos el siguiente comando para iniciar Kafka:
-
+```
 bin/kafka-server-start.sh config/server.properties
-
+```
 8. En este mismo directorio, creamos un nuevo topic mediante:
-
+```
 bin/kafka-topics.sh \
       --create \
       --bootstrap-server localhost:9092 \
       --replication-factor 1 \
       --partitions 1 \
       --topic flight_delay_classification_request
-      
+ ```    
  Y obtenemos el resultado esperado:
  ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/22ed2616-e276-4380-a163-c103a7ed7abc)
  
