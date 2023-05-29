@@ -25,7 +25,7 @@ Básicamente el sistema funciona de la siguiente manera:
 1.	Clonamos el repositorio:
 ```bash
 git clone https://github.com/Big-Data-ETSIT/practica_creativa.git 
-
+```bash
 2. Descargamos los datos:
 ```bash
 resources/download_data.sh
