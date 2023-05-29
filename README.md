@@ -29,7 +29,7 @@ git clone https://github.com/Big-Data-ETSIT/practica_creativa.git
 2. Descargamos los datos:
 ```bash
 resources/download_data.sh
-
+```bash
 3. Instalamos todos los componentes incluidos en la arquitectura de la práctica
 
 4. Creamos y usamos el entorno de Python:
