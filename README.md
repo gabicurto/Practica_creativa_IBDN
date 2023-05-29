@@ -24,33 +24,33 @@ Básicamente el sistema funciona de la siguiente manera:
 # Pasos seguidos para el funcionamiento de la práctica
 1.	Clonamos el repositorio:
 ```bash
-'git clone https://github.com/Big-Data-ETSIT/practica_creativa.git'
+git clone https://github.com/Big-Data-ETSIT/practica_creativa.git
 
 2. Descargamos los datos:
-```bash
+
 resources/download_data.sh
 
 3. Instalamos todos los componentes incluidos en la arquitectura de la práctica
 
 4. Creamos y usamos el entorno de Python:
-```bash
+
 python3 -m venv env
 source env/bin/activate
 
 5. Instalamos librerías necesarias
-```bash
+
 pip install -r requirements.txt
 
 6. Abrimos la consola y vamos al directorio de descarga de Kafka y ejecutamos el siguiente comando para iniciar Zookeeper:
- ```bash
+
 bin/zookeeper-server-start.sh config/zookeeper.properties
  
  7. Después, en otra terminal, volvemos a acceder al directorio de descarga y ejecutamos el siguiente comando para iniciar Kafka:
- ```bash
+
 bin/kafka-server-start.sh config/server.properties
 
 8. En este mismo directorio, creamos un nuevo topic mediante:
-```bash
+
 bin/kafka-topics.sh \
       --create \
       --bootstrap-server localhost:9092 \
