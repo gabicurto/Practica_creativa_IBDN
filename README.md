@@ -61,6 +61,7 @@ bin/kafka-topics.sh \
  ```    
  Y obtenemos el resultado esperado:
  ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/22ed2616-e276-4380-a163-c103a7ed7abc)
+
  
  También comprobamos que se ha creado correctamente el topic viendo la lista de topics disponible:
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/47419f93-ec7a-4938-93ca-d80db2a7c3e8)
