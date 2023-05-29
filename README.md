@@ -131,6 +131,14 @@ Observamos la salida de depuración en la consola JavaScript mientras el cliente
 Como información adicional, podemos visualizar abriendo una nueva consola con un consumidor para ver los mensajes enviado a a ese topic
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/4de19ac0-af76-46cc-bfcb-c9af0bde505b)
 
+## Check the predictions records inserted in MongoDB
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/9bc8110c-57c1-43af-9bd5-c44eea79beb6)
+Nuestra salida se ve de la siguiente manera:
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/d80e1953-717b-4f8d-823c-88c4e7828802)
+
+
+# Dockerizar cada uno de los servicios que componen la arquitectura completa y desplegar el escenario completo usando docker-compose
+Pasamos al segundo escenario de la práctica, en el que dockerizamos los servicios para su posterior despliegue en Google Cloud. Cre
 
 # Entrenar el modelo con Apache Airflow
 1. Instalamos las depencias de Apache Airflow
