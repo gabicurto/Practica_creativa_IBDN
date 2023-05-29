@@ -1,1 +1,1 @@
-# Practica_creativa_IBDN
+# Practica_creativa_IBDN_ Lucía_Martínez__Gabriela_Curto
