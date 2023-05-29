@@ -64,6 +64,7 @@ bin/kafka-topics.sh \
 
  
  También comprobamos que se ha creado correctamente el topic viendo la lista de topics disponible:
+ 
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/47419f93-ec7a-4938-93ca-d80db2a7c3e8)
 
 Abrimos una nueva consola con un consumidor para ver los mensajes mandados a ese topic
