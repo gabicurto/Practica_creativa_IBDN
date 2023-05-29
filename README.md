@@ -65,6 +65,29 @@ bin/kafka-topics.sh \
  También comprobamos que se ha creado correctamente el topic viendo la lista de topics disponible:
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/47419f93-ec7a-4938-93ca-d80db2a7c3e8)
 
+ ## Import the distance records to MongoDB
+ 1. Primero comprobamos que tenemos Mongo y que se está ejecutando
+ ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/244c1cb3-4256-4b7c-9949-e1cffc1b2203)
+ 
+ 2. Ejecutamos el script import_distances realizando la siguiente modificación para su correcto funcionamiento
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/d9131407-7243-4ff0-af62-d91d8bde82aa)
+- Obtenemos un resultado diferente al proporcionado en github debido a la versión instalada de mongo, que en nuestro caso ha sido mongosh.
+- Podemos comprobar que se importaron 4696 documentos correctamente y se crearon los índices esperados en la colección
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/c9af6ab8-796a-4965-ad8d-ff7460ae232b)
+
+# Train and Save de the model with PySpark mllib
+
+# Entrenar el modelo con Apache Airflow
+1. Instalamos las depencias de Apache Airflow
+```
+cd resources/airflow
+pip install -r requirements.txt -c constraints.txt
+```
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/1ef2c3e8-1666-4d91-8fb9-413701628cb4)
+
+
+
 
 
 
