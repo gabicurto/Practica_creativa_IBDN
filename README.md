@@ -21,5 +21,7 @@ Básicamente el sistema funciona de la siguiente manera:
 - Se realiza la consulta de los resultados de la predicción a través del uso de polling que flask realiza sobre Mongo y se se muestran en el servidor web.
 
 
-# PASOS SEGUIDOS PARA EL FUNCIONAMIENTO DE LA PRÁCTICA:
+# Pasos seguidos para el funcionamiento de la práctica
+1.	Clonamos el repositorio:
+< git clone https://github.com/Big-Data-ETSIT/practica_creativa.git >
 
