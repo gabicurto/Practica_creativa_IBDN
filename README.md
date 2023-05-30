@@ -195,6 +195,30 @@ Comprobamos también el funcionamiento de Spark
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/cfc9f567-7b36-4aeb-a330-518fee649366)
 
 
+# Desplegar el escenario completo en Google Cloud/AWS
+Para desplegar el escenario completo en Google Cloud lo primero que hacemos es crear una instancia de máquina virtual en el servicio de Compute Engine
+
+Una vez creada, desde la terminal de nuestra máquina virtual importamos el zip correspondiente a nuestros archivos.
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/6551b8ec-5741-4b01-ab85-459af0c61747)
+
+Y antes de desplegar el escenario debemos instalar Docker-compose.
+Una vez configurado todo lo necesario, seguimos los mismos pasos que seguíamos para dockerizar nuestros servicios
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/c7fbbe38-0fb7-44f5-b1f7-39f4e511b35d)
+
+Realizamos el siguiente comando para establecer el puerto en el que se visualizaran los resultados en el servidor web.
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/d2e2a1b3-823e-44c1-8665-4228d66411b5)
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/a8264e72-ec91-40e1-b7af-66044e419db7)
+
+Comprobamos por último que se envían correctamente las predicciones a Mongo y se pueden visualizar en el servidor web.
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/59faca3e-e10c-467a-94df-47434aeabed7)
+
+
+
+
+
+
 
 
 
