@@ -167,6 +167,49 @@ Nuestra salida se ve de la siguiente manera:
 
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/1908a318-89b6-4530-ad2f-91607261a247)
 
+# Entrenar el modelo con Apache Airflow
+1. Instalamos las depencias de Apache Airflow
+```
+cd resources/airflow
+pip install -r requirements.txt -c constraints.txt
+```
+
+2. Establecemos la variable de entorno PROJECT_HOME a :
+```
+export PROJECT_HOME=/home/lucia/practica_creativa
+```
+
+3. Configuramos el entorno de Airflow
+```
+export AIRFLOW_HOME=/home/lucia/practica_creativa/resources/airflow
+mkdir $AIRFLOW_HOME/dags
+mkdir $AIRFLOW_HOME/logs
+mkdir $AIRFLOW_HOME/plugins
+```
+
+4. Copiamos el DAG definido en resources/airflow/setup.py en la carpeta dags creada en el paso anterior
+cp setup.py $AIRFLOW_HOME/dags
+
+5. Iniciamos la base de datos de Airflow
+```
+airflow db init
+airflow users create \
+    --username admin \
+    --firstname Jack \
+    --lastname  Sparrow\
+    --role Admin \
+    --email example@mail.org
+    --pass pass
+```
+6. Inicializamos también el scheduler y el servidor web
+```
+airflow webserver --port 9090
+airflow scheduler
+```
+7. Por último mostramos un ejemplo de ejecución de un DAG a través de linea de comandos el DAG creado con anterioridad
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/4205ecc5-321b-4530-9a85-f3d5e8338b74)
+
 
 
 # Dockerizar cada uno de los servicios que componen la arquitectura completa y desplegar el escenario completo usando docker-compose
@@ -179,21 +222,29 @@ Creamos un archivo Docker-compose con todos los contenedores asociados a los ser
 
 Por otro lado, realizamos un dockerfile para los servicios Mongo y Webserver adicionalmente, y los referenciamos dentro del Dockerfile.
 *MONGO*
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/3bccdf5f-5bda-4fc6-ac01-7c2c57ce9e6a)
 *WEBSERVER*
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/33e24575-c921-44d7-a470-071fdecd1a03)
+
 Hacemos las modificaciones en MakePrediction.scala porque las demás las automatizamos en los ficheros mencionados justo ahora.
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/158f75f3-b746-49af-8de3-0f834d5cfc22)
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/eecc422b-d02c-4229-95cd-5a24560e8571)
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/82bbf4fe-b2b5-44c9-b312-8722ddbb3115)
 
 También modificamos el fichero predict_flask.py (localhost cambiamos por kafka)
 
 Accedemos al contenedor de Kafka y creamos el topic
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/2a2d6cf0-04b9-45a0-9721-2b4eb5717d7d)
 
 Y para comprobar que se crea correctamente utilizamos:
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/fbba12ac-7e9e-499b-bbec-9560ac2b5e9c)
+
 Para realizar la predicción mediante spark submit, y enviar las predicciones a mongo utilizamos.
 
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/e12ef24f-c3a7-444c-af4a-d32f00b58f75)
@@ -274,48 +325,7 @@ Y el fichero docker-compose por lo tanto quedaría de la siguiente manera.
 
 
 
-# Entrenar el modelo con Apache Airflow
-1. Instalamos las depencias de Apache Airflow
-```
-cd resources/airflow
-pip install -r requirements.txt -c constraints.txt
-```
 
-2. Establecemos la variable de entorno PROJECT_HOME a :
-```
-export PROJECT_HOME=/home/lucia/practica_creativa
-```
-
-3. Configuramos el entorno de Airflow
-```
-export AIRFLOW_HOME=/home/lucia/practica_creativa/resources/airflow
-mkdir $AIRFLOW_HOME/dags
-mkdir $AIRFLOW_HOME/logs
-mkdir $AIRFLOW_HOME/plugins
-```
-
-4. Copiamos el DAG definido en resources/airflow/setup.py en la carpeta dags creada en el paso anterior
-cp setup.py $AIRFLOW_HOME/dags
-
-5. Iniciamos la base de datos de Airflow
-```
-airflow db init
-airflow users create \
-    --username admin \
-    --firstname Jack \
-    --lastname  Sparrow\
-    --role Admin \
-    --email example@mail.org
-    --pass pass
-```
-6. Inicializamos también el scheduler y el servidor web
-```
-airflow webserver --port 9090
-airflow scheduler
-```
-7. Por último mostramos un ejemplo de ejecución de un DAG a través de linea de comandos el DAG creado con anterioridad
-
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/4205ecc5-321b-4530-9a85-f3d5e8338b74)
 
 
 
