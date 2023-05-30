@@ -215,10 +215,47 @@ Comprobamos por último que se envían correctamente las predicciones a Mongo y 
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/59faca3e-e10c-467a-94df-47434aeabed7)
 
 
+# Desplegar el escenario completo usando kubernetes
+
+Primero tenemos que crear:
+-	Un configmap.yaml: que se utiliza para almacenar la configuración y las variables de entorno que necesitan nuestros contenedores. 
+
+-	Un deployment.yaml: el archivo de despliegue que define cómo se despliegan y se escalan nuestros contenedores en Kubernetes.
+
+-	Un services.yaml: el archivo de servicio se utiliza para exponer nuestros contenedores dentro de Kubernetes. 
+
+Después de crear los ficheros mencionados lo primero que debemos hacer es instalar minikube, siguiendo las indicaciones proporcionadas por la página de minikube. 
+Posteriormente realizamos ```minikube start``` para empezar nuestro cluster y para poder observar el funcionamiento de nuestros deployments usaremos
+ ```
+minikube addons enable metrics-server
+minikube dashboard
+```
+
+Ahora desplegamos creamos nuestro fichero de configuración y archivo de servicios.
+```
+kubectl create -f configmap.yaml
+```
+```
+kubectl create -f services.yaml
+```
+Y por último, desplegamos todos nuestros servicios mediante el archivo de despliegue.
+```
+kubectl apply -f deployment.yaml
+```
+
+Podemos visualizar que se han creado mirando nuestro panel de información de minikube. 
 
 
+#  Modificar el código para que el resultado de la predicción se escriba en Kafka y se presente en la aplicación 
+En este apartado lo que haremos será modificar el fichero de predicción MakePrediction.scala para que envíe las predicciones a Kafka en lugar de a Mongo, para ello necesitamos modificar el fichero añadiendo una condición para que lo envíe a Kafka en lugar de a Mongo, que será referenciado a su vez en el fichero docker-compose.
+La modificación se ve de la siguiente manera
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/4bf61f4a-7dc9-4baf-9ba9-c8e08e4dea9d)
 
+También tenemos que modificar el fichero 'predict_flask.py' para que de nuevo, el servidor web extraiga la información de Kafka en lugar de Mongo, también se referenciará en el fichero docker-compose mediante una variable de entorno.
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/e1d61ed0-fc3f-46bb-8e7a-9645507bba20)
 
+Y el fichero docker-compose por lo tanto quedaría de la siguiente manera.
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/29ed82d1-e025-4666-9f25-d65c8c67c1ac)
 
 
 
@@ -229,11 +266,42 @@ Comprobamos por último que se envían correctamente las predicciones a Mongo y 
 cd resources/airflow
 pip install -r requirements.txt -c constraints.txt
 ```
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/1ef2c3e8-1666-4d91-8fb9-413701628cb4)
 
+2. Establecemos la variable de entorno PROJECT_HOME a :
+```
+export PROJECT_HOME=/home/lucia/practica_creativa
+```
 
+3. Configuramos el entorno de Airflow
+```
+export AIRFLOW_HOME=/home/lucia/practica_creativa/resources/airflow
+mkdir $AIRFLOW_HOME/dags
+mkdir $AIRFLOW_HOME/logs
+mkdir $AIRFLOW_HOME/plugins
+```
 
+4. Copiamos el DAG definido en resources/airflow/setup.py en la carpeta dags creada en el paso anterior
+cp setup.py $AIRFLOW_HOME/dags
 
+5. Iniciamos la base de datos de Airflow
+```
+airflow db init
+airflow users create \
+    --username admin \
+    --firstname Jack \
+    --lastname  Sparrow\
+    --role Admin \
+    --email example@mail.org
+    --pass pass
+```
+6. Inicializamos también el scheduler y el servidor web
+```
+airflow webserver --port 9090
+airflow scheduler
+```
+7. Por último mostramos un ejemplo de ejecución de un DAG a través de linea de comandos el DAG creado con anterioridad
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/4205ecc5-321b-4530-9a85-f3d5e8338b74)
 
 
 
