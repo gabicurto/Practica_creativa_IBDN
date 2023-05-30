@@ -300,26 +300,43 @@ Ahora desplegamos creamos nuestro fichero de configuración y archivo de servici
 ```
 kubectl create -f configmap.yaml
 ```
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/0bf1a6be-de63-4d28-87cf-b75be6b1914c)
+
+
 ```
 kubectl create -f services.yaml
 ```
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/4aec54f3-0bb8-4a0b-bd38-5d301a78ca8f)
+
+
 Y por último, desplegamos todos nuestros servicios mediante el archivo de despliegue.
 ```
 kubectl apply -f deployment.yaml
 ```
 
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/0d3071c3-31b9-4598-b338-ca8d90bfc558)
+
+
 Podemos visualizar que se han creado mirando nuestro panel de información de minikube. 
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/158227b6-130c-4f7f-ab30-3b862e852266)
+
 
 
 #  Modificar el código para que el resultado de la predicción se escriba en Kafka y se presente en la aplicación 
 En este apartado lo que haremos será modificar el fichero de predicción MakePrediction.scala para que envíe las predicciones a Kafka en lugar de a Mongo, para ello necesitamos modificar el fichero añadiendo una condición para que lo envíe a Kafka en lugar de a Mongo, que será referenciado a su vez en el fichero docker-compose.
 La modificación se ve de la siguiente manera
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/4bf61f4a-7dc9-4baf-9ba9-c8e08e4dea9d)
 
 También tenemos que modificar el fichero 'predict_flask.py' para que de nuevo, el servidor web extraiga la información de Kafka en lugar de Mongo, también se referenciará en el fichero docker-compose mediante una variable de entorno.
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/e1d61ed0-fc3f-46bb-8e7a-9645507bba20)
 
 Y el fichero docker-compose por lo tanto quedaría de la siguiente manera.
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/29ed82d1-e025-4666-9f25-d65c8c67c1ac)
 
 
