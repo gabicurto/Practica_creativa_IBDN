@@ -50,6 +50,7 @@ bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 bin/kafka-server-start.sh config/server.properties
 ```
+
 8. En este mismo directorio, creamos un nuevo topic mediante:
 ```
 bin/kafka-topics.sh \
@@ -59,12 +60,15 @@ bin/kafka-topics.sh \
       --partitions 1 \
       --topic flight_delay_classification_request
  ```    
+ 
  Y obtenemos el resultado esperado:
 
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/1a25ec2d-4bf3-4de4-a2d0-a7bb3786ae9a)
 
+
  
 También comprobamos que se ha creado correctamente el topic viendo la lista de topics disponible:
+
  
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/b720e704-2b8a-43d8-9c39-0921ef421926)
 
@@ -107,6 +111,7 @@ bin/kafka-console-consumer.sh \
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/aa04ba1a-6de0-4cb0-bd87-98e6fe08120f)
 
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/3110a777-bf3c-4b7b-bbcb-c2ef505bd330)
+
 
 
 Y comprobamos los ficheros que se han guardado en la carpeta models:
