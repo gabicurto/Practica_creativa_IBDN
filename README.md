@@ -60,12 +60,14 @@ bin/kafka-topics.sh \
       --topic flight_delay_classification_request
  ```    
  Y obtenemos el resultado esperado:
- ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/22ed2616-e276-4380-a163-c103a7ed7abc)
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/1a25ec2d-4bf3-4de4-a2d0-a7bb3786ae9a)
 
  
- También comprobamos que se ha creado correctamente el topic viendo la lista de topics disponible:
+También comprobamos que se ha creado correctamente el topic viendo la lista de topics disponible:
  
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/47419f93-ec7a-4938-93ca-d80db2a7c3e8)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/b720e704-2b8a-43d8-9c39-0921ef421926)
+
 
 Abrimos una nueva consola con un consumidor para ver los mensajes mandados a ese topic
 ```
@@ -78,65 +80,79 @@ bin/kafka-console-consumer.sh \
 
  ## Import the distance records to MongoDB
  1. Primero comprobamos que tenemos Mongo y que se está ejecutando
- ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/244c1cb3-4256-4b7c-9949-e1cffc1b2203)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/4d193d94-e3a3-43b1-8c7d-64a7d5d31cbf)
+
  
  2. Ejecutamos el script import_distances realizando la siguiente modificación para su correcto funcionamiento
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/d9131407-7243-4ff0-af62-d91d8bde82aa)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/081f6961-d7a9-4207-98ec-a5ee9bd7be71)
+
 - Obtenemos un resultado diferente al proporcionado en github debido a la versión instalada de mongo, que en nuestro caso ha sido mongosh.
 - Podemos comprobar que se importaron 4696 documentos correctamente y se crearon los índices esperados en la colección
 
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/c9af6ab8-796a-4965-ad8d-ff7460ae232b)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/8e917d0c-6d14-4ec3-bc98-e608e691dbb7)
 
 
 ## Train and Save de the model with PySpark mllib
 1.Establecemos la variable de entorno JAVA_HOME con la ruta del directorio de instalación de Java, y establecemos la variable de entorno SPARK_HOME con la ruta con la ruta del directorio de instalación de Spark.
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/f1884a99-27e7-480b-b804-54f41df11240)
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/286cf26b-1486-48bd-9393-b9ac5091baf1)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/e761d560-4090-4f34-9629-a169b93bcc7a)
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/e8904c01-08d5-4275-9759-175dad8a2e76)
+
+
 
 2. Por último, ejecutamos el script
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/152c99e3-3359-429c-9a00-96ed67dbee83)
 
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/40b3e0cb-b405-4a24-988f-70e4b56872ca)
 
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/29b6af82-2370-4072-b3c2-dc7eda2f8db9)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/aa04ba1a-6de0-4cb0-bd87-98e6fe08120f)
 
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/518709df-6386-4601-a5c1-68f8a59aab13)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/3110a777-bf3c-4b7b-bbcb-c2ef505bd330)
+
 
 Y comprobamos los ficheros que se han guardado en la carpeta models:
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/2170bc47-75f3-43e7-97f2-5dacd90abd67)
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/eef6de33-2a75-4a6a-a928-bcbb9fbe75a5)
 
 
 ## Run Flight Predictor con spark-submit
 1.Primero debemos cambiar el valor ‘base_path’ en la clase scala MakePrediction, a la ruta donde se encuentra nuestro repositorio de clones:
 
 Modificamos primero en la clase MakePrediction de scala:
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/09265e47-a308-4683-a4ba-9adc9ada04ff)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/9c9a366a-4cf6-42bc-a01b-79bff834f3db)
+
 
 Ejecutamos el código utilizando spark-submit.
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/8d17aaf9-e681-4f8b-a652-a9a23733bd50)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/997f9d55-4258-4b80-a391-1a234bab1568)
 
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/832e8fea-3818-4d31-add9-9db542325527)
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/22685a44-3868-4fdd-a189-e7d804ff0598)
 
 Adicionalmente visualizamos la consola de Kafka, iniciada previamente en apartados anteriores:
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/39d810f6-7871-4971-90d9-ff1c8f6b9ec4)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/81fa7558-d25a-4e0b-81f8-fa24d7420058)
 
 ## Start the prediction request Web Application
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/7c6477e8-1bfe-40ce-a1ad-8528f295661f)
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/55054925-86fd-4570-8899-85ea3b195a34)
+
 1. Establecemos la variable de entorno PROJECT_HOME con la ruta de nuestro repositorio clonado y vamos al directorio ‘web’ en resources y ejecutamos el archivo de aplicación web flask predict_flask.py. 
 2. Visualizamos los resultados que se muestran en el navegador, para ver si se hace la predicción, y efectivamente podemos verlo
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/1cd048d4-772d-4efd-8476-c6078a77951a)
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/187eae20-ef59-45a8-bf9e-3f6a8f012778)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/b7675e2e-b3cf-4577-8b74-272d758ca464)
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/8c4f353f-1c4c-4ca9-8520-17bd01e5f6b1)
 
 Observamos la salida de depuración en la consola JavaScript mientras el cliente realiza repetidamente consultas o solicitudes a un punto final de respuesta para obtener información actualizada.
 
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/d8c267bc-67a9-4ecb-b6cd-cf03b543b06a)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/3ca40b0f-9908-4ce2-9619-dc02b0668ee9)
 
 Como información adicional, podemos visualizar abriendo una nueva consola con un consumidor para ver los mensajes enviado a a ese topic
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/4de19ac0-af76-46cc-bfcb-c9af0bde505b)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/8c4d8208-43af-488c-a1a1-68a8ecf32a6f)
 
 ## Check the predictions records inserted in MongoDB
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/9bc8110c-57c1-43af-9bd5-c44eea79beb6)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/b670d7f2-f4ad-47b2-b616-584364446bda)
+
 Nuestra salida se ve de la siguiente manera:
-![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/d80e1953-717b-4f8d-823c-88c4e7828802)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/1908a318-89b6-4530-ad2f-91607261a247)
+
 
 
 # Dockerizar cada uno de los servicios que componen la arquitectura completa y desplegar el escenario completo usando docker-compose
@@ -175,7 +191,7 @@ Y para comprobar su correcto funcionamiento accedemos al servidor que se encuent
 Comprobamos la información almacenada en Mongo
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/a613920e-44e1-4804-ab55-05449af4de85)
 
-
+Comprobamos también el funcionamiento de Spark
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/cfc9f567-7b36-4aeb-a330-518fee649366)
 
 
