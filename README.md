@@ -87,7 +87,9 @@ bin/kafka-console-consumer.sh \
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/4d193d94-e3a3-43b1-8c7d-64a7d5d31cbf)
 
  
+ 
  2. Ejecutamos el script import_distances realizando la siguiente modificación para su correcto funcionamiento
+ 
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/081f6961-d7a9-4207-98ec-a5ee9bd7be71)
 
 - Obtenemos un resultado diferente al proporcionado en github debido a la versión instalada de mongo, que en nuestro caso ha sido mongosh.
@@ -105,10 +107,15 @@ bin/kafka-console-consumer.sh \
 
 
 2. Por último, ejecutamos el script
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/152c99e3-3359-429c-9a00-96ed67dbee83)
 
 
+
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/aa04ba1a-6de0-4cb0-bd87-98e6fe08120f)
+
+
 
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/3110a777-bf3c-4b7b-bbcb-c2ef505bd330)
 
