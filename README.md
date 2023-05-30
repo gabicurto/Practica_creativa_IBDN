@@ -140,7 +140,48 @@ Nuestra salida se ve de la siguiente manera:
 
 
 # Dockerizar cada uno de los servicios que componen la arquitectura completa y desplegar el escenario completo usando docker-compose
-Pasamos al segundo escenario de la práctica, en el que dockerizamos los servicios para su posterior despliegue en Google Cloud. Cre
+Pasamos al segundo escenario de la práctica, en el que dockerizamos los servicios para su posterior despliegue en Google Cloud. 
+Creamos un archivo Docker-compose con todos los contenedores asociados a los servicios que vamos a desplegar.
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/a9430f75-9d3d-4af4-8bc1-5ea17ec475df)
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/3cf8f1f1-0e15-4ed3-9aa8-182d78b14775)
+
+Por otro lado, realizamos un dockerfile para los servicios Mongo y Webserver adicionalmente, y los referenciamos dentro del Dockerfile.
+*MONGO*
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/3bccdf5f-5bda-4fc6-ac01-7c2c57ce9e6a)
+*WEBSERVER*
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/33e24575-c921-44d7-a470-071fdecd1a03)
+Hacemos las modificaciones en MakePrediction.scala porque las demás las automatizamos en los ficheros mencionados justo ahora.
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/158f75f3-b746-49af-8de3-0f834d5cfc22)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/eecc422b-d02c-4229-95cd-5a24560e8571)
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/82bbf4fe-b2b5-44c9-b312-8722ddbb3115)
+
+También modificamos el fichero predict_flask.py (localhost cambiamos por kafka)
+
+Accedemos al contenedor de Kafka y creamos el topic
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/2a2d6cf0-04b9-45a0-9721-2b4eb5717d7d)
+
+Y para comprobar que se crea correctamente utilizamos:
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/fbba12ac-7e9e-499b-bbec-9560ac2b5e9c)
+Para realizar la predicción mediante spark submit, y enviar las predicciones a mongo utilizamos.
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/e12ef24f-c3a7-444c-af4a-d32f00b58f75)
+
+Y para comprobar su correcto funcionamiento accedemos al servidor que se encuentra en la ruta localhost:5001, de acuerdo con los puertos especificados en el docker-compose.
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/eab4f07c-71ce-4645-baae-d376e7191fda)
+
+Comprobamos la información almacenada en Mongo
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/a613920e-44e1-4804-ab55-05449af4de85)
+
+
+![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/cfc9f567-7b36-4aeb-a330-518fee649366)
+
+
+
+
+
 
 # Entrenar el modelo con Apache Airflow
 1. Instalamos las depencias de Apache Airflow
