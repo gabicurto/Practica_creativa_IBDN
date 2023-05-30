@@ -163,6 +163,8 @@ Como información adicional, podemos visualizar abriendo una nueva consola con u
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/b670d7f2-f4ad-47b2-b616-584364446bda)
 
 Nuestra salida se ve de la siguiente manera:
+
+
 ![image](https://github.com/gabicurto/Practica_creativa_IBDN/assets/127130231/1908a318-89b6-4530-ad2f-91607261a247)
 
 
